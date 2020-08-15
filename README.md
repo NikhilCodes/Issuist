@@ -4,12 +4,12 @@ An issue tracking web application.
 
 Stuffs:
 
- [x] EmailPasswordAuthentication
- [x] Auth Persistence
- [x] Pleasant UI
- [ ] Google OAuth
- [ ] Useing JWT with expressJS
- [ ] MongoDB setup
+ - [x] EmailPasswordAuthentication
+ - [x] Auth Persistence
+ - [x] Pleasant UI
+ - [ ] Google OAuth
+ - [ ] Useing JWT with expressJS
+ - [ ] MongoDB setup
 
 
 
