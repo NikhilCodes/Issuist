@@ -1,3 +1,18 @@
+# Issuist
+
+An issue tracking web application.
+
+Stuffs:
+
+ [x] EmailPasswordAuthentication
+ [x] Auth Persistence
+ [x] Pleasant UI
+ [ ] Google OAuth
+ [ ] Useing JWT with expressJS
+ [ ] MongoDB setup
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

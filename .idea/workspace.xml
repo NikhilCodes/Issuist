@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="159a0e7c-de25-4d4e-8ce1-8ccb43b4bcca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CircularSpinner.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/NotFoundPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProjectCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1g3LVgKyFplKa8bythsEAFrN9Ri" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src" />
+      <recent name="$PROJECT_DIR$/frontend/src/components/assets" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="159a0e7c-de25-4d4e-8ce1-8ccb43b4bcca" name="Default Changelist" comment="" />
+      <created>1597338354979</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597338354979</updated>
+      <workItem from="1597338356225" duration="12630000" />
+      <workItem from="1597378368325" duration="15569000" />
+      <workItem from="1597411077489" duration="3934000" />
+      <workItem from="1597415577850" duration="3551000" />
+      <workItem from="1597421239022" duration="10582000" />
+      <workItem from="1597463275169" duration="4075000" />
+      <workItem from="1597472594493" duration="13003000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="834" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597488458904">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="834" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1597488458904" />
+    <state x="212" y="302" width="526" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597343051710">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="212" y="302" width="526" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1597343051710" />
+    <state x="262" y="310" width="426" height="484" key="FileChooserDialogImpl" timestamp="1597379046208">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="262" y="310" width="426" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1597379046208" />
+    <state width="1897" height="278" key="GridCell.Tab.0.bottom" timestamp="1597487965922">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="278" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1597487965922" />
+    <state width="1897" height="278" key="GridCell.Tab.0.center" timestamp="1597487965922">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="278" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1597487965922" />
+    <state width="1897" height="278" key="GridCell.Tab.0.left" timestamp="1597487965921">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="278" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1597487965921" />
+    <state width="1897" height="278" key="GridCell.Tab.0.right" timestamp="1597487965922">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="278" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1597487965922" />
+    <state x="349" y="274" width="826" height="524" key="IDE.errors.dialog" timestamp="1597430763809">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="349" y="274" width="826" height="524" key="IDE.errors.dialog/0.27.1920.1053@0.27.1920.1053" timestamp="1597430763809" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1597472691727">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="600" height="428" key="javadoc.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1597472691727" />
+    <state x="144" y="254" key="run.anything.popup" timestamp="1597387060863">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="144" y="254" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1597387060863" />
+  </component>
+</project>

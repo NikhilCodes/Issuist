@@ -1,38 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .App {
-  text-align: center;
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#login-bg {
+    background-image: url("components/assets/login-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#login-form {
+    padding: 50px 10px;
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 340px;
+    background-color: white;
+    border-radius: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.login-heading {
+    font-size: 30px;
+    font-weight: bolder;
 }
 
-.App-link {
-  color: #61dafb;
+.login-text-input input {
+    width: 60%;
+    height: 40px;
+    border-radius: 13px;
+    border: none;
+    padding: 0 15px;
+    font-weight: bolder;
+    outline: none;
+    box-shadow: 0 5px 20px #d0d0d0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-submit-button {
+    font-weight: 600;
+    color: white;
+    background-color: #912fd9;
+    padding: 12px 18px;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    box-shadow: 0 8px 20px #ce90ff;
+    transition-duration: 100ms;
+}
+
+.login-submit-button:active {
+    background-color: #d92f95;
+    box-shadow: 0 8px 10px #ff90aa;
+}
+
+.login-google-button {
+    border-radius: 100px;
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    box-shadow: 0 5px 20px #d0d0d0;
+    outline: none;
+    border: none;
+    background-position: center;
+    background-size: 35px;
+    background-repeat: no-repeat;
+    margin: 0 10px;
+}
+
+.login-switch-button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 16px;
+    color: blueviolet;
+}
+
+#error-text {
+    color: red;
+    font-family: Quicksand, sans-serif;
+    font-size: 16px;
+}
+
+#homepage {
+    background-image: url("components/assets/home-bg-top.png");
+    background-position: top;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    background-color: #0f0545;
+}
+
+.app-bar {
+    text-align: left;
+    color: white;
+    font-family: Quicksand, sans-serif;
+    padding: 20px 40px 10px 40px;
+    background-color: #1f1f1f;
+    /*background-image: linear-gradient(rgba(0, 8, 90, 0.74), rgba(255, 255, 255, 0));*/
+}
+
+.app-bar h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 22px;
+    font-weight: 300;
+    display: inline-block;
+    margin: 0;
+}
+
+#projects-section {
+    width: 70%;
+    margin-top: 160px;
+    position: relative;
+    text-align: left;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header {
+    color: white;
+    font-size: 28px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+}
+
+.project-card {
+    margin-top: 20px;
+    margin-right: 20px;
+    background-color: #363636;
+    color: white;
+    font-family: Quicksand, sans-serif;
+    display: inline-block;
+    height: 200px;
+    width: 300px;
+    font-size: 70px;
+    border-radius: 10px;
+}
+
+.create-project-card {
+    margin-top: 20px;
+    margin-right: 20px;
+    background-color: #363636;
+    color: white;
+    font-family: Quicksand, sans-serif;
+    display: inline-block;
+    height: 200px;
+    width: 300px;
+    font-size: 70px;
+    border-radius: 10px;
 }
