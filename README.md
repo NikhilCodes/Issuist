@@ -6,10 +6,13 @@ Stuffs:
 
  - [x] EmailPasswordAuthentication
  - [x] Auth Persistence
+ - [x] Used JWT to recognize user machine
  - [x] Pleasant UI
+ - [x] Implement Dash Board
+ - [ ] Implement Issues page
+ - [ ] Implement Comment Section
+ - [ ] Add MongoDB to store projects and related data
  - [ ] Google OAuth
- - [ ] Useing JWT with expressJS
- - [ ] MongoDB setup
 
 
 

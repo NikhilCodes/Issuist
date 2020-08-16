@@ -133,27 +133,22 @@
 }
 
 .project-card {
+    position: relative;
     margin-top: 20px;
     margin-right: 20px;
+    padding: 0 15px;
     background-color: #363636;
     color: white;
     font-family: Quicksand, sans-serif;
     display: inline-block;
     height: 200px;
-    width: 300px;
+    width: 270px;
     font-size: 70px;
     border-radius: 10px;
 }
 
-.create-project-card {
-    margin-top: 20px;
-    margin-right: 20px;
-    background-color: #363636;
-    color: white;
-    font-family: Quicksand, sans-serif;
+.project-card h6 {
+    margin: 0;
+    font-size: 25px;
     display: inline-block;
-    height: 200px;
-    width: 300px;
-    font-size: 70px;
-    border-radius: 10px;
 }

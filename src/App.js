@@ -1,9 +1,9 @@
-import React, {createContext, useEffect, useState} from 'react';
-import {navigate, Redirect, Router,} from '@reach/router'
+import React, {createContext, useState} from 'react';
+import {Router} from '@reach/router'
 import './App.css';
 import Login from "./components/LoginPage";
 import Home from "./components/HomePage"
-import firebaseApp from "./FirebaseConfig";
+
 import NotFound from "./components/NotFoundPage";
 
 export const AuthContext = createContext(null)
@@ -11,7 +11,6 @@ export const AuthContext = createContext(null)
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null)
   const [user, setUser] = useState({})
-
   return (
       <AuthContext.Provider value={[isAuthenticated, setIsAuthenticated, user, setUser]}>
         <div className="App">

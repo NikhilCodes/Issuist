@@ -3,6 +3,7 @@ import {navigate, Redirect} from "@reach/router";
 import {AuthContext} from "../App";
 
 import firebaseApp from "../FirebaseConfig";
+import loginToApi from "../libs/fetchFromApi";
 
 function Login() {
   const [isAuthenticated, setIsAuthenticated, user, setUser] = useContext(AuthContext)
@@ -40,6 +41,11 @@ function Login() {
       //
     }
     setIsAuthenticated(true)
+    const response = await loginToApi("http://localhost:8000/login")
+    if(!response.success) {
+      console.log("AUTH WITH API FAILED!")
+      return null;
+    }
     localStorage.setItem("isAuthenticated", "TRUE")
 
     if (errors) {

@@ -1,25 +1,33 @@
 import React from "react"
 
 export function CreateProjectCard() {
-  return (<div className="create-project-card">
+  return (<div className="project-card">
     <div style={{
-      top: "50%",
-      left: "50%",
+      top: "10%",
+      display: "inline-block",
+      position: "relative",
       textAlign: "center",
-      overflow: "hidden",
-      transform: "translate(-50%, -50%)",
-      position: "relative"
+      width: "100%"
     }}>+
+
       <div style={{
-        fontSize: '18px'
-      }}>Add Project</div>
+        fontSize: "20px"
+      }}>
+        New Project
+      </div>
     </div>
   </div>)
 }
 
-function ProjectCard() {
+function ProjectCard(props) {
   return (<div className="project-card">
-
+    <h6>{props.project.projectName}</h6>
+    <div style={{
+      // WARNING: Changing components will cause align
+      // mismatch with CreateProjectCard as well.
+      fontSize: "20px"
+    }}>{props.project.projectCode}
+    </div>
   </div>)
 }
 

@@ -6,6 +6,7 @@ import CircularSpinner from "./CircularSpinner"
 import ProjectCard, {CreateProjectCard} from "./ProjectCard"
 
 import UnknownAvatar from './assets/avatar-person.svg'
+import fetchFromAPI from "../libs/fetchFromApi";
 
 // Home TopBar Component
 function AppBar(props) {
@@ -61,7 +62,7 @@ function AppBar(props) {
         {props.fullname} &nbsp;
         <img style={{verticalAlign: "middle"}} height="30px" width="30px"
              src={props.photoURL ? props.photoURL : UnknownAvatar}
-             alt="Profile Image"/>
+             alt={""}/>
         <br/>
       </div>
     </div>
@@ -72,7 +73,7 @@ function AppBar(props) {
 // Home Component
 function Home() {
   const [isAuthenticated, setIsAuthenticated, user, setUser] = useContext(AuthContext)
-
+  const [projectList, setProjectList] = useState([])
   const onLogOut = async () => {
     await firebaseApp.auth.signOut()
     await setIsAuthenticated(false)
@@ -88,9 +89,26 @@ function Home() {
       } else {
         if (a) {
           setUser(a)
-          if (localStorage.getItem("isAuthenticated") === "TRUE") {
-            setIsAuthenticated(true)
-          }
+          // Only run the below function when user is set.
+          fetchFromAPI("http://localhost:8000/projects").then(response => {
+            if (!response) {
+              return null;
+            }
+
+            if (response.status === "LOGIN_NEEDED") {
+              console.log("LOGIN NEEDED")
+              //onLogOut().then()  TODO Uncomment on using
+            } else if (response.status === "OK") {
+              if (localStorage.getItem("isAuthenticated") === "TRUE") {
+                setIsAuthenticated(true)
+                setProjectList(response.projects)
+              }
+            } else if (response.status === "FAIL") {
+              console.log("Ran into error!", response.reason)
+            } else {
+              console.log("Unknown Status!")
+            }
+          })
         }
       }
     })
@@ -108,12 +126,12 @@ function Home() {
 
       <div id="project-list">
         <CreateProjectCard/>
-        <CreateProjectCard/>
-        <CreateProjectCard/>
-        <CreateProjectCard/>
+
+        {projectList.map(project => {
+          return <ProjectCard key={project._id} project={project} />
+        })}
       </div>
     </div>
-
   </div>) : null
 }
 

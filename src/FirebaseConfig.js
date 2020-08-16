@@ -1,5 +1,4 @@
-import app from "firebase/app"
-import * as firebase from "firebase";
+import * as firebase from "firebase"
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -14,9 +13,8 @@ const config = {
 
 class FirebaseApp {
   constructor() {
-    app.initializeApp(config)
-    this.auth = app.auth()
-    this.db = app.firestore()
+    firebase.initializeApp(config)
+    this.auth = firebase.auth()
   }
 }
 
