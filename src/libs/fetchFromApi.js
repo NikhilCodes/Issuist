@@ -1,10 +1,14 @@
 import firebaseApp from "../FirebaseConfig";
 
-async function loginToApi(url) {
+async function makeRequestToApi(url) {
   const user = firebaseApp.auth.currentUser
   const token = user && (await user.getIdToken());
 
-  if(!token) return null;
+
+  if(!token){
+    console.log("Token Not submitted")
+    return null;
+  }
   return await (await fetch(url, {
     method: 'POST',
     credentials: "include",
@@ -15,4 +19,4 @@ async function loginToApi(url) {
   })).json()
 }
 
-export default loginToApi
+export default makeRequestToApi

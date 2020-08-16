@@ -6,7 +6,7 @@ import CircularSpinner from "./CircularSpinner"
 import ProjectCard, {CreateProjectCard} from "./ProjectCard"
 
 import UnknownAvatar from './assets/avatar-person.svg'
-import fetchFromAPI from "../libs/fetchFromApi";
+import makeRequestToApi from "../libs/fetchFromApi";
 
 // Home TopBar Component
 function AppBar(props) {
@@ -74,13 +74,13 @@ function AppBar(props) {
 function Home() {
   const [isAuthenticated, setIsAuthenticated, user, setUser] = useContext(AuthContext)
   const [projectList, setProjectList] = useState([])
+
   const onLogOut = async () => {
     await firebaseApp.auth.signOut()
     await setIsAuthenticated(false)
     await localStorage.removeItem("isAuthenticated")
     await navigate('/login')
   }
-
   // Sync auth-status with localStorage
   if (isAuthenticated === null) {
     firebaseApp.auth.onAuthStateChanged(a => {
@@ -90,15 +90,16 @@ function Home() {
         if (a) {
           setUser(a)
           // Only run the below function when user is set.
-          fetchFromAPI("http://localhost:8000/projects").then(response => {
-            if (!response) {
-              return null;
-            }
 
-            if (response.status === "LOGIN_NEEDED") {
+          makeRequestToApi("http://localhost:8000/projects").then(response => {
+            console.log("made request to projects")
+            if (!response) {
+              console.log("Empty Response")
+            } else if (response.status === "LOGIN_NEEDED") {
               console.log("LOGIN NEEDED")
-              //onLogOut().then()  TODO Uncomment on using
+              onLogOut().then()
             } else if (response.status === "OK") {
+              console.log("PROJECTS_RESPONSE_OK")
               if (localStorage.getItem("isAuthenticated") === "TRUE") {
                 setIsAuthenticated(true)
                 setProjectList(response.projects)
@@ -112,9 +113,29 @@ function Home() {
         }
       }
     })
+  } else if (isAuthenticated === false) {
+    return <Redirect to='/login' noThrow/>
+  } else if (isAuthenticated && projectList.length === 0) {
+    makeRequestToApi("http://localhost:8000/projects").then(response => {
+      if (response) {
+        if (response.status === "LOGIN_NEEDED") {
+          console.log("LOGIN NEEDED")
+          onLogOut().then()
+          setProjectList(response.projects)
+        } else if (response.status === "OK") {
+          if (localStorage.getItem("isAuthenticated") === "TRUE") {
+            setProjectList(response.projects)
+          } else {
+            onLogOut().then()
+          }
+        } else if (response.status === "FAIL") {
+          console.log("Ran into error!", response.reason)
+        } else {
+          console.log("Unknown Status!")
+        }
+      }
+    })
   }
-
-  if (isAuthenticated === false) return <Redirect to='/login' noThrow/>
 
   return isAuthenticated ? (<div id="homepage">
     <AppBar fullname={user.displayName} onLogOutFunc={onLogOut}/>
@@ -128,7 +149,7 @@ function Home() {
         <CreateProjectCard/>
 
         {projectList.map(project => {
-          return <ProjectCard key={project._id} project={project} />
+          return <ProjectCard key={project._id} project={project}/>
         })}
       </div>
     </div>

@@ -1,6 +1,6 @@
 const {sign} = require("jsonwebtoken")
 const admin = require("../FirebaseAdminApp")
-
+const {updateSessionTokenForUserDocument} = require("../libs/UserUtils")
 
 async function decodeIdToken(req, res, next) {
   if (req.headers?.authorization?.startsWith('Bearer ')) {
@@ -22,15 +22,16 @@ const createSessionToken = (uid) => {
   })
 }
 
-const sendSessionToken = (req, res) => {
+const sendSessionToken = async (req, res) => {
   const currentUser = req['currentUser']
   if (!currentUser) return null;
   const sessionToken = createSessionToken(currentUser.uid)
+  await updateSessionTokenForUserDocument(currentUser.uid, sessionToken)
+
   res.clearCookie("sessionToken")
   res.cookie('sessionToken', sessionToken, {
     httpOnly: true,
   })
-  console.log("Saving... ", sessionToken)
 }
 
 module.exports = {

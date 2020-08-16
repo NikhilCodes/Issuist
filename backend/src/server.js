@@ -35,9 +35,9 @@ server.post('/', (req, res) => {
   res.send(req['currentUser'])
 })
 
-server.post('/login', (req, res) => {
+server.post('/login', async (req, res) => {
   try {
-    sendSessionToken(req, res)
+    await sendSessionToken(req, res)
     res.send({
       success: true
     })
@@ -50,8 +50,6 @@ server.post('/login', (req, res) => {
 })
 
 server.post('/projects', (req, res) => {
-  console.log(req.cookies.sessionToken)
-
   try {
     // const userDB = [{
     //   _id: "EhFcaqfDo7cLHGNaW6vA2kDT6Za2",
@@ -66,6 +64,7 @@ server.post('/projects', (req, res) => {
     // }]
     // console.log(req.cookies)
     const sessionToken = req.cookies.sessionToken
+    console.log("SERVER1",sessionToken)
     const {uid} = verify(sessionToken, process.env.SESSION_TOKEN_SECRET)
 
     if (!uid) {
@@ -75,6 +74,7 @@ server.post('/projects', (req, res) => {
     }
 
     getUserByUidFromMongo(uid).then(async user => {
+
       if (!(user && sessionToken === user.sessionToken)) {
         if (uid) {
           // Making sure user is really getting logged out
@@ -84,7 +84,7 @@ server.post('/projects', (req, res) => {
           status: "LOGIN_NEEDED"
         })
       }
-
+      console.log("SERVER2", user.projects)
       res.send({
         status: "OK",
         projects: await getProjectsFromProjectIds(user.projects),
