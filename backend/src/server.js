@@ -13,11 +13,6 @@ require('dotenv').config()
 
 const server = express()
 
-// mongoose.connect(
-//     "mongodb://127.0.0.1:27017/IssuistDB",
-//     {useUnifiedTopology: true, useNewUrlParser: true}
-// )
-
 mongoose.connect(
     "mongodb+srv://alpha-n1khil:shield3120@issuist.j1mpv.gcp.mongodb.net/IssuistDB?retryWrites=true&w=majority",
     {
@@ -36,14 +31,15 @@ server.use(cookieParser())
 server.use(morgan('common'))
 server.use(express.json())
 server.use(express.urlencoded({extended: true}))
+server.use(express.static('frontend-build'))
 
 server.use(decodeIdToken)
 
-server.post('/', (req, res) => {
-  res.send(req['currentUser'])
+server.get('/', (req, res) => {
+  res.sendFile("/frontend-build/index.html")
 })
 
-server.post('/login', async (req, res) => {
+server.post('/api/login', async (req, res) => {
   try {
     await sendSessionToken(req, res)
     res.send({
@@ -57,7 +53,7 @@ server.post('/login', async (req, res) => {
   }
 })
 
-server.post('/projects', (req, res) => {
+server.post('/api/projects', (req, res) => {
   try {
     // const userDB = [{
     //   _id: "EhFcaqfDo7cLHGNaW6vA2kDT6Za2",
