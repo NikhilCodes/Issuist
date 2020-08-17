@@ -5,7 +5,7 @@ async function makeRequestToApi(url) {
   const token = user && (await user.getIdToken());
 
 
-  if(!token){
+  if (!token) {
     console.log("Token Not submitted")
     return null;
   }

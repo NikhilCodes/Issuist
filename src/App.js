@@ -17,7 +17,7 @@ function App() {
           <Router id="router">
             <Home path='/'/>
             <Login path='/login'/>
-            <NotFound default />
+            <NotFound default/>
           </Router>
         </div>
       </AuthContext.Provider>

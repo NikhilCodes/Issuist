@@ -2,6 +2,7 @@
   "name": "issuist",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@reach/router": "^1.3.4",
     "@testing-library/jest-dom": "^4.2.4",
@@ -15,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "react-scripts build && rm -rf backend/frontend-build && cp -a build/ backend/frontend-build && cp backend ../Issuist-production -a",
+    "production": "react-scripts build && rm -rf backend/frontend-build && cp -a build/ backend/frontend-build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

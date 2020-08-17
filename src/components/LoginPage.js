@@ -41,7 +41,7 @@ function Login() {
       //
     }
     const response = await makeRequestToApi("/api/login")
-    if(!response.success) {
+    if (!response.success) {
       console.log("AUTH WITH API FAILED!")
       return null;
     }

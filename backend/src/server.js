@@ -1,5 +1,6 @@
 const express = require("express")
 const cors = require("cors")
+const path = require("path")
 const mongoose = require("mongoose")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
@@ -35,8 +36,11 @@ server.use(express.static('frontend-build'))
 
 server.use(decodeIdToken)
 
-server.get('*', (req, res) => {
-  res.sendFile("/frontend-build/index.html")
+server.get("*", (req, res) => {
+  console.log(path.resolve(__dirname, '../frontend-build'))
+  res.sendFile("index.html", {
+    root: path.resolve(__dirname, '../frontend-build')
+  })
 })
 
 server.post('/api/login', async (req, res) => {
