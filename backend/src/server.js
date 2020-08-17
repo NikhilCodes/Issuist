@@ -13,9 +13,17 @@ require('dotenv').config()
 
 const server = express()
 
+// mongoose.connect(
+//     "mongodb://127.0.0.1:27017/IssuistDB",
+//     {useUnifiedTopology: true, useNewUrlParser: true}
+// )
+
 mongoose.connect(
-    "mongodb://127.0.0.1:27017/IssuistDB",
-    {useUnifiedTopology: true, useNewUrlParser: true}
+    "mongodb+srv://alpha-n1khil:shield3120@issuist.j1mpv.gcp.mongodb.net/IssuistDB?retryWrites=true&w=majority",
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    },
 )
 
 server.use(
@@ -64,10 +72,11 @@ server.post('/projects', (req, res) => {
     // }]
     // console.log(req.cookies)
     const sessionToken = req.cookies.sessionToken
-    console.log("SERVER1",sessionToken)
+    console.log("SERVER1", sessionToken)
     const {uid} = verify(sessionToken, process.env.SESSION_TOKEN_SECRET)
 
     if (!uid) {
+      console.log("DIDNOT FIND UID")
       return res.send({
         status: "LOGIN_NEEDED"
       })
@@ -80,6 +89,9 @@ server.post('/projects', (req, res) => {
           // Making sure user is really getting logged out
           logOutUserByUid(uid).then()
         }
+        console.log("USER OBJ", user)
+        console.log("SESSION TOKEN", sessionToken)
+        console.log(user.sessionToken)
         return res.send({
           status: "LOGIN_NEEDED"
         })

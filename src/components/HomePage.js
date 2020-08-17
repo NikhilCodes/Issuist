@@ -73,6 +73,7 @@ function AppBar(props) {
 // Home Component
 function Home() {
   const [isAuthenticated, setIsAuthenticated, user, setUser] = useContext(AuthContext)
+  const [isLoadingProjects, setIsLoadingProject] = useState(true)
   const [projectList, setProjectList] = useState([])
 
   const onLogOut = async () => {
@@ -81,6 +82,7 @@ function Home() {
     await localStorage.removeItem("isAuthenticated")
     await navigate('/login')
   }
+
   // Sync auth-status with localStorage
   if (isAuthenticated === null) {
     firebaseApp.auth.onAuthStateChanged(a => {
@@ -90,7 +92,6 @@ function Home() {
         if (a) {
           setUser(a)
           // Only run the below function when user is set.
-
           makeRequestToApi("http://localhost:8000/projects").then(response => {
             console.log("made request to projects")
             if (!response) {
@@ -103,9 +104,11 @@ function Home() {
               if (localStorage.getItem("isAuthenticated") === "TRUE") {
                 setIsAuthenticated(true)
                 setProjectList(response.projects)
+                setIsLoadingProject(false)
               }
             } else if (response.status === "FAIL") {
               console.log("Ran into error!", response.reason)
+              onLogOut().then()
             } else {
               console.log("Unknown Status!")
             }
@@ -122,14 +125,17 @@ function Home() {
           console.log("LOGIN NEEDED")
           onLogOut().then()
           setProjectList(response.projects)
+          setIsLoadingProject(false)
         } else if (response.status === "OK") {
           if (localStorage.getItem("isAuthenticated") === "TRUE") {
             setProjectList(response.projects)
+            setIsLoadingProject(false)
           } else {
             onLogOut().then()
           }
         } else if (response.status === "FAIL") {
           console.log("Ran into error!", response.reason)
+          onLogOut().then()
         } else {
           console.log("Unknown Status!")
         }
@@ -146,11 +152,13 @@ function Home() {
       <br/>
 
       <div id="project-list">
-        <CreateProjectCard/>
+        {!isLoadingProjects ? <div>
+          <CreateProjectCard/>
 
-        {projectList.map(project => {
-          return <ProjectCard key={project._id} project={project}/>
-        })}
+          {projectList.map(project => {
+            return <ProjectCard key={project._id} project={project}/>
+          })}
+        </div> : <div>Loading ...</div>}
       </div>
     </div>
   </div>) : null
