@@ -40,7 +40,7 @@ function Login() {
       })
       //
     }
-    const response = await makeRequestToApi("http://localhost:8000/login")
+    const response = await makeRequestToApi("/api/login")
     if(!response.success) {
       console.log("AUTH WITH API FAILED!")
       return null;

@@ -15,6 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "react-scripts build && rm -rf backend/frontend-build && cp -a build/ backend/frontend-build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

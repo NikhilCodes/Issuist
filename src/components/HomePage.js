@@ -92,7 +92,7 @@ function Home() {
         if (a) {
           setUser(a)
           // Only run the below function when user is set.
-          makeRequestToApi("http://localhost:8000/projects").then(response => {
+          makeRequestToApi("/api/projects").then(response => {
             console.log("made request to projects")
             if (!response) {
               console.log("Empty Response")
@@ -119,7 +119,7 @@ function Home() {
   } else if (isAuthenticated === false) {
     return <Redirect to='/login' noThrow/>
   } else if (isAuthenticated && projectList.length === 0) {
-    makeRequestToApi("http://localhost:8000/projects").then(response => {
+    makeRequestToApi("/api/projects").then(response => {
       if (response) {
         if (response.status === "LOGIN_NEEDED") {
           console.log("LOGIN NEEDED")
