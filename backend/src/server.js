@@ -35,7 +35,7 @@ server.use(express.static('frontend-build'))
 
 server.use(decodeIdToken)
 
-server.get('/', (req, res) => {
+server.get('*', (req, res) => {
   res.sendFile("/frontend-build/index.html")
 })
 
@@ -55,20 +55,7 @@ server.post('/api/login', async (req, res) => {
 
 server.post('/api/projects', (req, res) => {
   try {
-    // const userDB = [{
-    //   _id: "EhFcaqfDo7cLHGNaW6vA2kDT6Za2",
-    //   sessionToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJFaEZjYXFmRG83Y0xIR05hVzZ2QTJrRFQ2WmEyIiwiaWF0IjoxNTk3NTc0MjUzLCJleHAiOjE1OTc2NjA2NTN9.tdGG-Z9xoCIzHVdvZEq-Gx-7XIE-tBZwUySq7pre-D0",
-    //   projects: [{
-    //     _id: "jh3ui4hr8wenr834",
-    //   }, {
-    //     _id: "yrth45t45t34tg52",
-    //   }, {
-    //     _id: "nvjir8nf745834tg",
-    //   }]
-    // }]
-    // console.log(req.cookies)
     const sessionToken = req.cookies.sessionToken
-    console.log("SERVER1", sessionToken)
     const {uid} = verify(sessionToken, process.env.SESSION_TOKEN_SECRET)
 
     if (!uid) {
