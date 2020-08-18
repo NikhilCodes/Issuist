@@ -4,9 +4,9 @@ import {AuthContext} from "../App";
 import firebaseApp from "../FirebaseConfig"
 import CircularSpinner from "./CircularSpinner"
 import ProjectCard, {CreateProjectCard} from "./ProjectCard"
+import makeRequestToApi from "../libs/fetchFromApi";
 
 import UnknownAvatar from './assets/avatar-person.svg'
-import makeRequestToApi from "../libs/fetchFromApi";
 
 // Home TopBar Component
 function AppBar(props) {
@@ -88,38 +88,38 @@ function Home() {
     firebaseApp.auth.onAuthStateChanged(a => {
       if (!localStorage.getItem("isAuthenticated")) {
         setIsAuthenticated(false)
-      } else {
-        if (a) {
-          setUser(a)
-          // Only run the below function when user is set.
-          makeRequestToApi("/api/projects").then(response => {
-            console.log("made request to projects")
-            if (!response) {
-              console.log("Empty Response")
-            } else if (response.status === "LOGIN_NEEDED") {
-              console.log("LOGIN NEEDED")
-              onLogOut().then()
-            } else if (response.status === "OK") {
-              console.log("PROJECTS_RESPONSE_OK")
-              if (localStorage.getItem("isAuthenticated") === "TRUE") {
-                setIsAuthenticated(true)
-                setProjectList(response.projects)
-                setIsLoadingProject(false)
-              }
-            } else if (response.status === "FAIL") {
-              console.log("Ran into error!", response.reason)
-              onLogOut().then()
-            } else {
-              console.log("Unknown Status!")
+      } else if (a) {
+        setUser(a)
+        const development = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+        // Only run the below function when user is set.
+        makeRequestToApi((development ? "http://localhost:8000" : "") + "/api/projects").then(response => {
+          console.log("made request to projects")
+          if (!response) {
+            console.log("Empty Response")
+          } else if (response.status === "LOGIN_NEEDED") {
+            console.log("LOGIN NEEDED")
+            onLogOut().then()
+          } else if (response.status === "OK") {
+            console.log("PROJECTS_RESPONSE_OK")
+            if (localStorage.getItem("isAuthenticated") === "TRUE") {
+              setIsAuthenticated(true)
+              setProjectList(response.projects)
+              setIsLoadingProject(false)
             }
-          })
-        }
+          } else if (response.status === "FAIL") {
+            console.log("Ran into error!", response.reason)
+            onLogOut().then()
+          } else {
+            console.log("Unknown Status!")
+          }
+        })
       }
     })
   } else if (isAuthenticated === false) {
     return <Redirect to='/login' noThrow/>
   } else if (isAuthenticated && projectList.length === 0) {
-    makeRequestToApi("/api/projects").then(response => {
+    const development = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+    makeRequestToApi((development ? "http://localhost:8000" : "") + "/api/projects").then(response => {
       if (response) {
         if (response.status === "LOGIN_NEEDED") {
           console.log("LOGIN NEEDED")
