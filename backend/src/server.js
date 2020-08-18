@@ -1,8 +1,9 @@
 const express = require("express")
 const cors = require("cors")
 const path = require("path")
-const mongoose = require("mongoose")
 const morgan = require("morgan")
+const mongoose = require("mongoose")
+const sslRedirect = require("heroku-ssl-redirect")
 const cookieParser = require("cookie-parser")
 const {verify} = require("jsonwebtoken")
 const {decodeIdToken, sendSessionToken} = require("./libs/tokens")
@@ -28,6 +29,7 @@ server.use(
       credentials: true,
     })
 )
+server.use(sslRedirect.default())
 server.use(cookieParser())
 server.use(morgan('common'))
 server.use(express.json())

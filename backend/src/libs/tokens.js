@@ -18,7 +18,7 @@ async function decodeIdToken(req, res, next) {
 
 const createSessionToken = (uid) => {
   return sign({uid}, process.env.SESSION_TOKEN_SECRET, {
-    expiresIn: "1d",
+    expiresIn: "4d",
   })
 }
 
@@ -31,6 +31,7 @@ const sendSessionToken = async (req, res) => {
   res.clearCookie("sessionToken")
   res.cookie('sessionToken', sessionToken, {
     httpOnly: true,
+    expires: new Date(Date.now() + 2628000000)  // One month
   })
 }
 
