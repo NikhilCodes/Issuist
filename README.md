@@ -13,6 +13,7 @@ Tasks to be done:
  - [ ] Implement Comment Section
  - [x] Add MongoDB to store projects and related data
  - [ ] Google OAuth
+ - [ ] Implement create function for all mongo collections
 
 
 ## Run (Developement Env)
