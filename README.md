@@ -17,7 +17,7 @@ Tasks to be done:
 
 ## Run (Developement Env)
 
-`cd backend && npm start`
+`cd backend && npm start`<br/>
 `cd .. && npm start`
 
 ## Deployment
