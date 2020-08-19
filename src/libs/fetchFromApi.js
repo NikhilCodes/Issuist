@@ -1,9 +1,8 @@
 import firebaseApp from "../FirebaseConfig";
 
-async function makeRequestToApi(url) {
+async function makeRequestToApi(url, body={}) {
   const user = firebaseApp.auth.currentUser
   const token = user && (await user.getIdToken());
-
 
   if (!token) {
     console.log("Token Not submitted")
@@ -16,6 +15,7 @@ async function makeRequestToApi(url) {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`
     },
+    body: JSON.stringify(body)
   })).json()
 }
 

@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser")
 const {verify} = require("jsonwebtoken")
 const {decodeIdToken, sendSessionToken} = require("./libs/tokens")
 const {logOutUserByUid} = require("./libs/UserUtils")
-const {getProjectsFromProjectIds, getUserByUidFromMongo} = require("./libs/getters")
+const {getProjectsFromProjectIds, getUserByUidFromMongo, getIssuesFromIssueIds} = require("./libs/getters")
 
 
 require('dotenv').config()
@@ -89,6 +89,53 @@ server.post('/api/projects', (req, res) => {
       res.send({
         status: "OK",
         projects: await getProjectsFromProjectIds(user.projects),
+      })
+    })
+  } catch (e) {
+    console.log(e)
+    res.send({status: "FAIL", reason: e})
+  }
+})
+
+server.post('/api/project', (req, res) => {
+  try {
+    const sessionToken = req.cookies.sessionToken
+    const {uid} = verify(sessionToken, process.env.SESSION_TOKEN_SECRET)
+
+    if (!uid) {
+      console.log("DIDNOT FIND UID")
+      return res.send({
+        status: "LOGIN_NEEDED"
+      })
+    }
+
+    getProjectsFromProjectIds([{_id: req.body._id}]).then(value => {
+      console.log("IN2", value)
+      return res.send({
+        project: value[0]
+      })
+    })
+  } catch (e) {
+    console.log(e)
+    res.send({status: "FAIL", reason: e})
+  }
+})
+
+server.post('/api/issue', (req, res) => {
+  try {
+    const sessionToken = req.cookies.sessionToken
+    const {uid} = verify(sessionToken, process.env.SESSION_TOKEN_SECRET)
+
+    if (!uid) {
+      console.log("DIDNOT FIND UID")
+      return res.send({
+        status: "LOGIN_NEEDED"
+      })
+    }
+
+    getIssuesFromIssueIds(req.body.issueIds).then(value => {
+      return res.send({
+        issues: value
       })
     })
   } catch (e) {

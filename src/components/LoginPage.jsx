@@ -42,7 +42,7 @@ function Login() {
     }
     const development = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
 
-    const response = await makeRequestToApi((development ? "http://localhost:8000" : "") + "/api/login")
+    const response = await makeRequestToApi((development ? "http://localhost:8000" : "") + "/api/login", {}, user)
     if (!response.success) {
       console.log("AUTH WITH API FAILED!")
       return null;

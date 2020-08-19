@@ -17,24 +17,23 @@ const ProjectSchema = new Schema({
   projectCode: {type: String},
   startDate: {type: String},
   endDate: {type: String},
-  issues: [{
-    _id: {type: String},
-  }],
+  issues: [{type: String}],
 }, {collection: 'ProjectCollection'})
 
 const IssueSchema = new Schema({
+  _id: {type: String},
   title: {type: String},
   issueNumber: {type: Number},
   isOpen: {type: Boolean},
-  createdOn: {type: Date},
+  createdOn: {type: String},
   authorId: {type: String},
   comments: [{
     commenterId: {type: String},
     comment: {type: String},
     isEdited: {type: Boolean},
-    commentedOn: {type: Date}
+    commentedOn: {type: String}
   }]
-}, {collection: 'IssuesCollection'})
+}, {collection: 'IssueCollection'})
 
 const UserToProjectsIdModel = mongoose.model('UserToProjectsIdModel', UserToProjectsIdSchema)
 const ProjectModel = mongoose.model('ProjectModel', ProjectSchema)

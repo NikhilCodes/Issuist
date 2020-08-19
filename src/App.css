@@ -145,10 +145,80 @@
     width: 270px;
     font-size: 70px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .project-card h6 {
     margin: 0;
     font-size: 25px;
     display: inline-block;
+}
+
+#project-details {
+    text-align: left;
+    padding: 50px 50px;
+}
+
+#project-details h3 {
+    font-size: 30px;
+    margin: 0;
+}
+
+#project-details h6 {
+    margin: 10px 0;
+    color: darkgrey;
+    font-size: 20px;
+}
+
+#issues-list {
+    width: 750px;
+    border: #c8d4dc solid 1px;
+    border-radius: 0 0 10px 10px;
+}
+
+#issues-list-top {
+    margin-top: 60px;
+    width: 720px;
+    padding: 15px;
+    border-top: #c8d4dc solid 1px;
+}
+
+#issues-list-top input {
+    height: 40px;
+    border: darkgrey solid 2px;
+    border-radius: 7px;
+}
+
+#issues-switcher {
+    margin: 0 50px;
+    border: dodgerblue 2px solid;
+    border-radius: 7px;
+    overflow: hidden;
+    position: absolute;
+}
+
+#issues-switcher button {
+    background-color: white;
+    height: 40px;
+    width: 90px;
+    border: none;
+    outline: none;
+    font-weight: 700;
+}
+
+#new-issue-button {
+    float: right;
+    height: 44px;
+    outline: none;
+    background-color: rgb(8, 219, 116);
+    border: none;
+    border-radius: 7px;
+    padding-right: 14px;
+    padding-left: 14px;
+    color: white;
+    font-weight: 700;
+}
+
+.issue-cell {
+    padding: 15px;
 }

@@ -1,4 +1,4 @@
-const {UserToProjectsIdModel, ProjectModel} = require("../models/MongoModels")
+const {UserToProjectsIdModel, ProjectModel, IssueModel} = require("../models/MongoModels")
 UserToProjectsIdModel.createIndexes(
     {"_id": 1}
 )
@@ -16,7 +16,17 @@ async function getProjectsFromProjectIds(projectIds) {
   return projects
 }
 
+async function getIssuesFromIssueIds(issueIds) {
+  let issues = []
+  for(let i=0;i<issueIds.length;i++) {
+    issues = [...issues, await IssueModel.findById(issueIds[i])]
+  }
+
+  return issues
+}
+
 module.exports = {
   getUserByUidFromMongo,
   getProjectsFromProjectIds,
+  getIssuesFromIssueIds
 }

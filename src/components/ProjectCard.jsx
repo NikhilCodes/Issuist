@@ -1,4 +1,5 @@
 import React from "react"
+import {navigate} from "@reach/router";
 
 export function CreateProjectCard() {
   return (<div className="project-card">
@@ -9,7 +10,6 @@ export function CreateProjectCard() {
       textAlign: "center",
       width: "100%"
     }}>+
-
       <div style={{
         fontSize: "20px"
       }}>
@@ -19,14 +19,19 @@ export function CreateProjectCard() {
   </div>)
 }
 
-function ProjectCard(props) {
-  return (<div className="project-card">
-    <h6>{props.project.projectName}</h6>
+function ProjectCard({project}) {
+
+  const onClickProject = () => {
+    navigate(`/project/${project._id}`)
+  }
+
+  return (<div className="project-card" onClick={onClickProject}>
+    <h6>{project.projectName}</h6>
     <div style={{
       // WARNING: Changing components will cause align
       // mismatch with CreateProjectCard as well.
       fontSize: "20px"
-    }}>{props.project.projectCode}
+    }}>{project.projectCode}
     </div>
   </div>)
 }
