@@ -114,6 +114,7 @@
     font-weight: 300;
     display: inline-block;
     margin: 0;
+    cursor: pointer;
 }
 
 #projects-section {
@@ -221,4 +222,15 @@
 
 .issue-cell {
     padding: 15px;
+    border-top: #c8d4dc solid 1px;
+    cursor: pointer;
+}
+
+.issue-cell .title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.issue-cell .subtitle {
+    color: #787878;
 }

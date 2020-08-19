@@ -17,12 +17,6 @@ function App() {
   const [user, setUser] = useState({})
 
   function AppBar(props) {
-    const onLogOut = async () => {
-      await firebaseApp.auth.signOut()
-      await setIsAuthenticated(false)
-      await localStorage.removeItem("isAuthenticated")
-      await navigate('/login')
-    }
     const [clickedOnUser, setClickedOnUser] = useState(-1)
 
     const nameDisplayStyle = {
@@ -70,7 +64,7 @@ function App() {
 
     return <>
       <div className="app-bar">
-        <h2>Issuist</h2>
+        <h2 onClick={() => navigate('/')}>Issuist</h2>
         <div style={nameDisplayStyle} onClick={onClickUser}>
           {props.fullname} &nbsp;
           <img style={{verticalAlign: "middle"}} height="30px" width="30px"
@@ -92,7 +86,7 @@ function App() {
   return (
       <AuthContext.Provider value={[isAuthenticated, setIsAuthenticated, user, setUser]}>
         <div className="App">
-          <AppBar fullname={user.displayName} onLogOutFunc={onLogOut}/>
+          {isAuthenticated ? <AppBar fullname={user.displayName} onLogOutFunc={onLogOut}/> : null}
           <Router id="router">
             <Home path='/'/>
             <Login path='/login'/>

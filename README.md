@@ -25,3 +25,9 @@ Tasks to be done:
 `npm run production`
 
 Now you just need to host the backend folder on a server.
+
+## Screenshots
+
+![ss1](/res/ss1.png)
+![ss2](/res/ss2.png)
+![ss3](/res/ss3.png)

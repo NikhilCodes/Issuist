@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import makeRequestToApi from "../libs/fetchFromApi";
 import {AuthContext} from "../App";
-import {redirectTo} from "@reach/router";
+import {navigate, redirectTo} from "@reach/router";
 import firebaseApp from "../FirebaseConfig";
 
 export function ProjectDetail({projectId}) {
@@ -12,8 +12,11 @@ export function ProjectDetail({projectId}) {
 
   function IssueCell({issueObj}) {
     if (!issueObj) return null
-    return <div className="issue-cell">
-      {issueObj.title}
+    return <div className="issue-cell" onClick={() => navigate()}>
+      <div className="title">{issueObj.title}</div>
+      <div className="subtitle">
+        <span>#{issueObj.issueNumber}&nbsp;opened on {issueObj.createdOn}</span>
+      </div>
     </div>
   }
 
@@ -51,7 +54,6 @@ export function ProjectDetail({projectId}) {
           color: viewIssueType === "CLOSED" ? "white" : "#474747"
         }} onClick={() => setViewIssueType("CLOSED")}>CLOSED</button>
       </span>
-
       <button id="new-issue-button">NEW ISSUE</button>
     </div>
     <div id="issues-list">
