@@ -9,9 +9,9 @@ Tasks to be done:
  - [x] Used JWT to recognize user machine
  - [x] Pleasant UI
  - [x] Implement Dash Board
- - [ ] Implement Issues page
+ - [x] Implement Issues page
  - [ ] Implement Comment Section
- - [ ] Add MongoDB to store projects and related data
+ - [x] Add MongoDB to store projects and related data
  - [ ] Google OAuth
 
 
